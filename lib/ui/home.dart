@@ -88,22 +88,24 @@ class _QuizAppState extends State<QuizApp> {
   }
 
   _checkAnswer(bool choice) {
-    if (choice == questions[_currentIndex].is_correct) {
-      setState(() {
-        _correct++;
-        questions[_currentIndex].is_visited = true;
-        _numberOfVisited++;
-      });
+    if (_currentIndex != questions.length - 1) {
+      if (choice == questions[_currentIndex].is_correct) {
+        setState(() {
+          _correct++;
+          questions[_currentIndex].is_visited = true;
+          _numberOfVisited++;
+        });
 
-      _nextQues();
-    } else {
-      _incorrect++;
-      setState(() {
-        questions[_currentIndex].is_visited = true;
-        _numberOfVisited++;
-      });
+        _nextQues();
+      } else {
+        _incorrect++;
+        setState(() {
+          questions[_currentIndex].is_visited = true;
+          _numberOfVisited++;
+        });
 
-      _nextQues();
+        _nextQues();
+      }
     }
   }
 
@@ -112,7 +114,7 @@ class _QuizAppState extends State<QuizApp> {
       setState(() {
         score = _correct / (_correct + _incorrect);
         _currentIndex = questions.length - 1;
-        _text = questions[_currentIndex];
+        _text = questions[_currentIndex].text;
         questions[_currentIndex].value = score;
       });
     } else {
