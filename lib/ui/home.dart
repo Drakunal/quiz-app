@@ -116,6 +116,7 @@ class _QuizAppState extends State<QuizApp> {
         _currentIndex = questions.length - 1;
         _text = questions[_currentIndex].text;
         questions[_currentIndex].value = score;
+        _text = _text + score.toString();
       });
     } else {
       setState(() {
