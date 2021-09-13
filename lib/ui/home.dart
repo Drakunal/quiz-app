@@ -13,7 +13,8 @@ class _QuizAppState extends State<QuizApp> {
   int _currentIndex = 0;
   int _correct = 0;
   int _incorrect = 0;
-  String _text = "";
+  String _text = "Press Next to start";
+
   int _numberOfVisited = 0;
   double score = 0;
   List questions = [
@@ -21,6 +22,7 @@ class _QuizAppState extends State<QuizApp> {
     Question.name("Are you male?", true, false),
     Score.name("Your score is :", 0)
   ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -112,11 +114,11 @@ class _QuizAppState extends State<QuizApp> {
   _nextQues() {
     if (_numberOfVisited >= questions.length - 1) {
       setState(() {
-        score = _correct / (_correct + _incorrect);
+        score = (_correct / (_correct + _incorrect)) * 100;
         _currentIndex = questions.length - 1;
         _text = questions[_currentIndex].text;
         questions[_currentIndex].value = score;
-        _text = _text + score.toString();
+        _text = _text + " " + score.toString() + " %";
       });
     } else {
       setState(() {
