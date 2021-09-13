@@ -9,7 +9,11 @@ class QuizApp extends StatefulWidget {
 }
 
 class _QuizAppState extends State<QuizApp> {
-  List questions = [Question.name("bara choda", true)];
+  int _currentIndex = 0;
+  List questions = [
+    Question.name("Are you female", false),
+    Question.name("Are you male?", true)
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,7 +50,7 @@ class _QuizAppState extends State<QuizApp> {
                     child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
-                    questions[0].question_text,
+                    questions[_currentIndex].question_text,
                     style: const TextStyle(
                       fontSize: 18,
                       color: Colors.black,
@@ -59,9 +63,11 @@ class _QuizAppState extends State<QuizApp> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 ElevatedButton(
-                    onPressed: _checkAnswer, child: const Text("True")),
+                    onPressed: () => _checkAnswer(true),
+                    child: const Text("True")),
                 ElevatedButton(
-                    onPressed: _checkAnswer, child: const Text("False")),
+                    onPressed: () => _checkAnswer(false),
+                    child: const Text("False")),
                 ElevatedButton(
                     onPressed: _nextQues, child: Icon(Icons.arrow_forward))
               ],
@@ -73,7 +79,20 @@ class _QuizAppState extends State<QuizApp> {
     );
   }
 
-  _checkAnswer() {}
+  _checkAnswer(bool choice) {
+    if (choice == questions[_currentIndex].is_correct) {
+      debugPrint("Correct");
+    } else {
+      debugPrint("Not correct");
+    }
+  }
 
-  _nextQues() {}
+  _nextQues() {
+    setState(() {
+      _currentIndex++;
+      if (_currentIndex >= questions.length) {
+        _currentIndex = 0;
+      }
+    });
+  }
 }
