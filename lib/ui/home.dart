@@ -11,8 +11,8 @@ class QuizApp extends StatefulWidget {
 class _QuizAppState extends State<QuizApp> {
   int _currentIndex = 0;
   List questions = [
-    Question.name("Are you female", false),
-    Question.name("Are you male?", true)
+    Question.name("Are you female", false, false),
+    Question.name("Are you male?", true, false)
   ];
   @override
   Widget build(BuildContext context) {
@@ -82,9 +82,11 @@ class _QuizAppState extends State<QuizApp> {
 
   _checkAnswer(bool choice) {
     if (choice == questions[_currentIndex].is_correct) {
+      questions[_currentIndex].is_visited = true;
       debugPrint("Correct");
       _nextQues();
     } else {
+      questions[_currentIndex].is_visited = true;
       debugPrint("Not correct");
       _nextQues();
     }
