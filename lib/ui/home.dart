@@ -10,10 +10,15 @@ class QuizApp extends StatefulWidget {
 
 class _QuizAppState extends State<QuizApp> {
   int _currentIndex = 0;
+  int _correct = 0;
+  int _incorrect = 0;
+  String _text = "";
   int _numberOfVisited = 0;
+  double score = 0;
   List questions = [
     Question.name("Are you female", false, false),
-    Question.name("Are you male?", true, false)
+    Question.name("Are you male?", true, false),
+    "Your Score is :"
   ];
   @override
   Widget build(BuildContext context) {
@@ -51,7 +56,7 @@ class _QuizAppState extends State<QuizApp> {
                     child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
-                    questions[_currentIndex].question_text,
+                    _text,
                     style: const TextStyle(
                       fontSize: 18,
                       color: Colors.black,
@@ -89,12 +94,14 @@ class _QuizAppState extends State<QuizApp> {
         debugPrint("false");
       }
       setState(() {
+        _correct++;
         questions[_currentIndex].is_visited = true;
         _numberOfVisited++;
       });
 
       _nextQues();
     } else {
+      _incorrect++;
       if (questions[_currentIndex].is_visited == true) {
         debugPrint("true");
       } else {
@@ -110,12 +117,20 @@ class _QuizAppState extends State<QuizApp> {
   }
 
   _nextQues() {
-    setState(() {
-      _currentIndex++;
-      if (_currentIndex >= questions.length) {
-        _currentIndex = 0;
-      }
-    });
+    if (_numberOfVisited >= questions.length - 1) {
+      setState(() {
+        _currentIndex = questions.length - 1;
+        _text = questions[_currentIndex];
+      });
+    } else {
+      setState(() {
+        _currentIndex++;
+        if (_currentIndex >= questions.length - 1) {
+          _currentIndex = 0;
+        }
+        _text = questions[_currentIndex].question_text;
+      });
+    }
 
     // if (_numberOfVisited < questions.length - 1) {
     //   int temp = _currentIndex;
