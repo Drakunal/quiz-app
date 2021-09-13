@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_app/model/Question.dart';
+import 'package:quiz_app/model/Score.dart';
 
 class QuizApp extends StatefulWidget {
   const QuizApp({Key? key}) : super(key: key);
@@ -18,7 +19,7 @@ class _QuizAppState extends State<QuizApp> {
   List questions = [
     Question.name("Are you female", false, false),
     Question.name("Are you male?", true, false),
-    "Your Score is :"
+    Score.name("Your score is :", 0)
   ];
   @override
   Widget build(BuildContext context) {
@@ -109,8 +110,10 @@ class _QuizAppState extends State<QuizApp> {
   _nextQues() {
     if (_numberOfVisited >= questions.length - 1) {
       setState(() {
+        score = _correct / (_correct + _incorrect);
         _currentIndex = questions.length - 1;
         _text = questions[_currentIndex];
+        questions[_currentIndex].value = score;
       });
     } else {
       setState(() {
