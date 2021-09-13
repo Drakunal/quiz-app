@@ -69,7 +69,8 @@ class _QuizAppState extends State<QuizApp> {
                     onPressed: () => _checkAnswer(false),
                     child: const Text("False")),
                 ElevatedButton(
-                    onPressed: _nextQues, child: Icon(Icons.arrow_forward))
+                    onPressed: _nextQues,
+                    child: const Icon(Icons.arrow_forward))
               ],
             ),
             Spacer(),
@@ -82,8 +83,10 @@ class _QuizAppState extends State<QuizApp> {
   _checkAnswer(bool choice) {
     if (choice == questions[_currentIndex].is_correct) {
       debugPrint("Correct");
+      _nextQues();
     } else {
       debugPrint("Not correct");
+      _nextQues();
     }
   }
 
