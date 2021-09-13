@@ -1,7 +1,13 @@
 class Question {
   String question_text;
   bool is_correct;
-  bool is_visited;
+  bool _is_visited;
 
-  Question.name(this.question_text, this.is_correct, this.is_visited);
+  bool get is_visited => _is_visited;
+
+  set is_visited(bool is_visited) {
+    _is_visited = is_visited;
+  }
+
+  Question.name(this.question_text, this.is_correct, this._is_visited);
 }
