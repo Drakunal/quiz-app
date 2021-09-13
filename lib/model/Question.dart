@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: file_names
 class Question {
   String question_text;
   bool is_correct;

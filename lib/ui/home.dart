@@ -88,11 +88,6 @@ class _QuizAppState extends State<QuizApp> {
 
   _checkAnswer(bool choice) {
     if (choice == questions[_currentIndex].is_correct) {
-      if (questions[_currentIndex].is_visited == true) {
-        debugPrint("true");
-      } else {
-        debugPrint("false");
-      }
       setState(() {
         _correct++;
         questions[_currentIndex].is_visited = true;
@@ -102,11 +97,6 @@ class _QuizAppState extends State<QuizApp> {
       _nextQues();
     } else {
       _incorrect++;
-      if (questions[_currentIndex].is_visited == true) {
-        debugPrint("true");
-      } else {
-        debugPrint("false");
-      }
       setState(() {
         questions[_currentIndex].is_visited = true;
         _numberOfVisited++;
