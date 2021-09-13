@@ -10,6 +10,23 @@ class QuizApp extends StatefulWidget {
 class _QuizAppState extends State<QuizApp> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Quiz"),
+        centerTitle: true,
+        backgroundColor: Color.fromRGBO(2, 200, 100, 0.9),
+      ),
+      backgroundColor: Colors.lightGreen.shade100,
+      body: Container(
+        child: Column(
+          children: [
+            Image.asset(
+              "images/logo.png",
+              width: 400,
+            )
+          ],
+        ),
+      ),
+    );
   }
 }
