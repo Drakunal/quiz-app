@@ -32,9 +32,39 @@ class _QuizAppState extends State<QuizApp> {
                 ),
               ),
             ),
-            Container(
-              height: 100,
-              child: Text(questions[0].question_text),
+            Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Container(
+                decoration: BoxDecoration(
+                    color: Colors.transparent,
+                    borderRadius: BorderRadius.circular(18),
+                    border: Border.all(
+                        color: Colors.grey, style: BorderStyle.solid)),
+                height: 100,
+                width: 300,
+                child: Center(
+                    child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    questions[0].question_text,
+                    style: const TextStyle(
+                      fontSize: 18,
+                      color: Colors.black,
+                    ),
+                  ),
+                )),
+              ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                ElevatedButton(
+                    onPressed: _checkAnswer, child: const Text("True")),
+                ElevatedButton(
+                    onPressed: _checkAnswer, child: const Text("False")),
+                ElevatedButton(
+                    onPressed: _nextQues, child: Icon(Icons.arrow_forward))
+              ],
             ),
             Spacer(),
           ],
@@ -42,4 +72,8 @@ class _QuizAppState extends State<QuizApp> {
       ),
     );
   }
+
+  _checkAnswer() {}
+
+  _nextQues() {}
 }
