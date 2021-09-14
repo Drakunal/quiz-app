@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:quiz_app/model/Question.dart';
 import 'package:quiz_app/model/Score.dart';
@@ -18,9 +19,12 @@ class _QuizAppState extends State<QuizApp> {
   int _numberOfVisited = 0;
   double score = 0;
   List questions = [
-    Question.name("Are you female", false, false),
-    Question.name("Are you male?", true, false),
-    Score.name("Your score is :", 0)
+    Question.name("Is Asia a country?", false, false),
+    Question.name("Australia is both a country and continent.", true, false),
+    Question.name("Plants contain chlorophyll.", true, false),
+    Question.name("Is operating system a software?", true, false),
+    Question.name("Are leaves white in color?", false, false),
+    Score.name("Your score is : ", 0)
   ];
 
   @override
@@ -61,9 +65,9 @@ class _QuizAppState extends State<QuizApp> {
                   child: Text(
                     _text,
                     style: const TextStyle(
-                      fontSize: 18,
-                      color: Colors.black,
-                    ),
+                        fontSize: 22,
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold),
                   ),
                 )),
               ),
