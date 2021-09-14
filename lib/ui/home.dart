@@ -125,11 +125,31 @@ class _QuizAppState extends State<QuizApp> {
         _text = _text + " " + score.toString() + " %";
       });
     } else {
+      debugPrint("The current index is $_currentIndex");
       setState(() {
-        _currentIndex++;
-        if (_currentIndex >= questions.length - 1) {
-          _currentIndex = 0;
+        int temp = _currentIndex;
+        temp++;
+        if (temp >= questions.length - 1) {
+          temp = 0;
         }
+        bool isVisited = false;
+        if (temp < questions.length - 1) {
+          isVisited = questions[temp].is_visited;
+        }
+
+        while (isVisited) {
+          temp++;
+          if (temp >= questions.length - 1) {
+            temp = 0;
+          }
+
+          isVisited = questions[temp].is_visited;
+        }
+        _currentIndex = temp;
+        // _currentIndex++;
+        // if (_currentIndex >= questions.length - 1) {
+        //   _currentIndex = 0;
+        // }
         _text = questions[_currentIndex].question_text;
       });
     }
