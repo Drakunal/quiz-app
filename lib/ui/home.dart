@@ -33,9 +33,9 @@ class _QuizAppState extends State<QuizApp> {
       appBar: AppBar(
         title: const Text("Quiz"),
         centerTitle: true,
-        backgroundColor: Color.fromRGBO(2, 200, 100, 0.9),
+        // backgroundColor: Color.fromRGBO(2, 200, 100, 0.9),
       ),
-      backgroundColor: Colors.lightGreen.shade100,
+      //backgroundColor: Colors.lightGreen.shade100,
       body: Container(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -64,10 +64,10 @@ class _QuizAppState extends State<QuizApp> {
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
                     _text,
-                    style: const TextStyle(
-                        fontSize: 22,
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold),
+                    // style: const TextStyle(
+                    //     fontSize: 22,
+                    //     color: Colors.black,
+                    //     fontWeight: FontWeight.bold),
                   ),
                 )),
               ),
